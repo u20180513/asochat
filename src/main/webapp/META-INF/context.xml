@@ -1,0 +1,12 @@
+<!DOCTYPE configuration>
+<Context>
+	<Resource auth="Container"
+			driverClassName="com.mysql.jdbc.Driver"
+			maxActive="20" maxIdle="10" maxWait="-1"
+			name="jdbc/asochat"
+			type="javax.sql.DataSource"
+			url="jdbc:mysql://localhost/asochat"
+			username="root"
+			password="root"
+	/>
+</Context>
