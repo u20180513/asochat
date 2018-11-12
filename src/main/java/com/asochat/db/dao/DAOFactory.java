@@ -21,7 +21,7 @@ public class DAOFactory {
 		return new JDBCOpenRoomDAO(getDataSource());
 	}
 
-	public static JDBCQuestionDAO createQADAO(){
+	public static JDBCQuestionDAO createQuestionDAO(){
 		return new JDBCQuestionDAO(getDataSource());
 	}
 	/**

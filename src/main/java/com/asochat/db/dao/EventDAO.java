@@ -10,9 +10,9 @@ public interface EventDAO{
 
 	public void insert(Event event);
 
-	public void delete(Event event);
+	public void delete(int eventId);
 
-	public void update(Event event);
+	public void update(int eventId);
 
 	public void insert_participant(int eventId, int asostId);
 }

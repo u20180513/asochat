@@ -40,14 +40,14 @@ public class JDBCEventDAO implements EventDAO{
 		}
 	}
 
-	public void delete(Event event) {
+	public void delete(int eventId) {
 		try {
 			String sql = "DELETE FROM Event "
 								+ "WHERE event_id = ?";
 
 			Connection connection = source.getConnection();
 			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setInt(1, event.getId());
+			statement.setInt(1, eventId);
 			statement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -83,14 +83,14 @@ public class JDBCEventDAO implements EventDAO{
 		return null;
 	}
 
-	public void update(Event event) {
+	public void update(int eventId) {
 		try {
 			String sql = "UPDATE Event "
 								+ "SET auth_flg = 1 "
 								+ "WHERE event_id = ?;";
 			Connection connection = source.getConnection();
 			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setInt(1, event.getId());
+			statement.setInt(1, eventId);
 			statement.executeUpdate();
 
 		} catch (SQLException e) {

@@ -10,7 +10,8 @@ import lombok.Data;
 @JacksonXmlRootElement
 public class Question {
 	private int id;
-	private Student user;
+	// private Student user;
+	private int studentId;
 	private String title;
 	private String content;
 

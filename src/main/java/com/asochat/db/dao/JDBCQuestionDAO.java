@@ -27,7 +27,7 @@ public class JDBCQuestionDAO implements QuestionDAO{
 			Connection connection = source.getConnection();
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setInt(1, question.getId());
-			statement.setInt(2, question.getUser().getId());
+			statement.setInt(2, question.getStudentId());
 			statement.setString(3, question.getTitle());
 			statement.setString(4, question.getContent());
 			statement.executeUpdate();

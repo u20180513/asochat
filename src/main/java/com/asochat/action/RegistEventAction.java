@@ -4,10 +4,11 @@ import com.asochat.db.dao.DAOFactory;
 import com.asochat.db.dao.JDBCEventDAO;
 import com.asochat.model.Event;
 
-public class DeleteEvent {
+public class RegistEventAction {
 	public void execute(Event event) {
 		final JDBCEventDAO dao = DAOFactory.createJDBCEventDAO();
 
-		dao.delete(event);
+		dao.insert(event);
+
 	}
 }

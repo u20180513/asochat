@@ -1,6 +1,7 @@
 package com.asochat.api.resources;
 
-import javax.ws.rs.Consumes;
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -8,11 +9,22 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.asochat.action.GetStudentAction;
 import com.asochat.action.LoginAction;
 import com.asochat.model.Student;
 
-@Path("user")
+@Path("/user")
 public class UserResource {
+
+	private static List<Student> students;
+
+	@GET
+	@Path("/all")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Student> all() {
+		students = GetStudentAction.execute();
+		return students;
+	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -24,17 +36,18 @@ public class UserResource {
 	}
 
 	@POST
-	@Path("/user/{id}/{password}")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("{id}/{password}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Student get(
+	public Student login(
 			@PathParam("id") int id,
-			@PathParam("password") String name
+			@PathParam("password") String pass
 			) {
-		// 引数からStudentオブジェクト取得
-		Student student = new Student(0, id, name);
+		LoginAction action = new LoginAction();
+		Student login_student = new Student(0, id, pass);
+		Student result = action.execute(login_student);
 
-		return student;
+		return result;
 	}
+
 
 }
